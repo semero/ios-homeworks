@@ -84,8 +84,8 @@
 		ADEC7C29287B6BBD00F2FED7 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				ADEC7C2A287B6BEC00F2FED7 /* ProfileHeaderView.swift */,
 				AD000268287B223500542A76 /* ProfileViewController.swift */,
+				ADEC7C2A287B6BEC00F2FED7 /* ProfileHeaderView.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
