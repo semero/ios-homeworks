@@ -12,19 +12,36 @@ class ProfileViewController: UIViewController {
     
     private lazy var profileHeaderView: ProfileHeaderView = {
         let view = ProfileHeaderView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        
         return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupView()
+        setupSubview()
+        setupConstraints()
+    }
+    
+    private func setupView() {
         self.view.backgroundColor = .systemGray6
         self.title = "Profile"
     }
     
-    override func viewWillLayoutSubviews() {
+    private func setupSubview() {
         self.view.addSubview(self.profileHeaderView)
-        self.profileHeaderView.frame = CGRect(
-            x: 0, y: 64, width: self.view.bounds.width, height: self.view.bounds.height)
+    }
+    
+    private func setupConstraints() {
+        let safeAreaGuide = view.safeAreaLayoutGuide
+        
+        NSLayoutConstraint.activate([
+            profileHeaderView.leftAnchor.constraint(equalTo: safeAreaGuide.leftAnchor),
+            profileHeaderView.rightAnchor.constraint(equalTo: safeAreaGuide.rightAnchor),
+            profileHeaderView.topAnchor.constraint(equalTo: safeAreaGuide.topAnchor),
+            profileHeaderView.heightAnchor.constraint(equalToConstant: 202)
+        ])
     }
 }
