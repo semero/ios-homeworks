@@ -17,6 +17,7 @@
 		AD00026B287B24FF00542A76 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00026A287B24FF00542A76 /* PostViewController.swift */; };
 		AD00026D287B263600542A76 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00026C287B263600542A76 /* Post.swift */; };
 		AD00026F287B284B00542A76 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD00026E287B284B00542A76 /* InfoViewController.swift */; };
+		AD30B036288B351200343D58 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AD30B035288B351200343D58 /* LogInViewController.swift */; };
 		ADEC7C2B287B6BEC00F2FED7 /* ProfileHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADEC7C2A287B6BEC00F2FED7 /* ProfileHeaderView.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		AD00026A287B24FF00542A76 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
 		AD00026C287B263600542A76 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		AD00026E287B284B00542A76 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		AD30B035288B351200343D58 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
 		ADEC7C2A287B6BEC00F2FED7 /* ProfileHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -86,6 +88,7 @@
 			children = (
 				AD000268287B223500542A76 /* ProfileViewController.swift */,
 				ADEC7C2A287B6BEC00F2FED7 /* ProfileHeaderView.swift */,
+				AD30B035288B351200343D58 /* LogInViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -168,6 +171,7 @@
 				AD000265287B1FED00542A76 /* MainTabBarController.swift in Sources */,
 				AD00026D287B263600542A76 /* Post.swift in Sources */,
 				AD00026F287B284B00542A76 /* InfoViewController.swift in Sources */,
+				AD30B036288B351200343D58 /* LogInViewController.swift in Sources */,
 				AD000253287B1C1500542A76 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
