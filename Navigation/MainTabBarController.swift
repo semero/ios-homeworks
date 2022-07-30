@@ -24,7 +24,7 @@ class MainTabBarController: UITabBarController {
             itemImage: "quote.bubble")
         
         let logInViewController = createNavController(
-            vc: LogInViewController(),
+            vc: LoginViewController(),
             itemName: "Profile",
             itemImage: "person.crop.rectangle")
         

@@ -15,15 +15,17 @@ class LogInViewController: UIViewController {
     private lazy var scrolView: UIScrollView = {
         let scrolView = UIScrollView()
         scrolView.translatesAutoresizingMaskIntoConstraints = false
-        scrolView.showsVerticalScrollIndicator = true
-        scrolView.showsHorizontalScrollIndicator = false
-        
+//        scrolView.showsVerticalScrollIndicator = true
+//        scrolView.showsHorizontalScrollIndicator = false
+//        scrolView.backgroundColor = .red
         return scrolView
     }()
     
     private lazy var contentView: UIView = {
         let contentView = UIView()
         contentView.translatesAutoresizingMaskIntoConstraints = false
+        
+        contentView.backgroundColor = .blue
         
         return contentView
     }()
@@ -85,6 +87,7 @@ class LogInViewController: UIViewController {
     }()
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         view.backgroundColor = .white
         
         setupView()
@@ -113,8 +116,8 @@ class LogInViewController: UIViewController {
     
     @objc private func willShowKeyboard(_ notification: NSNotification) {
         let keyboardHeight = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue.height
-        scrolView.contentInset.bottom += keyboardHeight ?? 0.0      // scrolView увеличивается больше, чем на высоту клавиатуры.
-    }                                                               // Проблема в setupConstraints()???
+        scrolView.contentInset.bottom = keyboardHeight ?? 0.0
+    }
     
     @objc private func willHideKeyboard(_ notification: NSNotification) {
         scrolView.contentInset.bottom = 0.0
@@ -127,7 +130,7 @@ class LogInViewController: UIViewController {
     }
     
     private func setupSubview() {
-        view.addSubview(scrolView)
+        self.view.addSubview(self.scrolView)
         scrolView.addSubview(contentView)
         contentView.addSubview(logoImageView)
         contentView.addSubview(loginDataView)
@@ -172,7 +175,6 @@ class LogInViewController: UIViewController {
             logInButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             logInButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -32),
             logInButton.heightAnchor.constraint(equalToConstant: 50)
-            
         ])
     }
     
