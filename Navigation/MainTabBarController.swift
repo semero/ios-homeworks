@@ -23,12 +23,12 @@ class MainTabBarController: UITabBarController {
             itemName: "Feed",
             itemImage: "quote.bubble")
         
-        let profileViewController = createNavController(
-            vc: ProfileViewController(),
+        let logInViewController = createNavController(
+            vc: LoginViewController(),
             itemName: "Profile",
             itemImage: "person.crop.rectangle")
         
-        viewControllers = [feedViewController, profileViewController]
+        viewControllers = [feedViewController, logInViewController]
     }
     
     private func createNavController(
