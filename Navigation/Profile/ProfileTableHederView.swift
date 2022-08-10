@@ -7,8 +7,7 @@
 
 import UIKit
 
-
-class ProfileHeaderView: UIView {
+class ProfileTableHederView: UITableViewHeaderFooterView {
     
     private var statusText = String()           // Переменная для хранения введённого статуса
     
@@ -88,16 +87,14 @@ class ProfileHeaderView: UIView {
         return button
     }()
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    override init(reuseIdentifier: String?) {
+        super.init(reuseIdentifier: reuseIdentifier)
         
-        self.backgroundColor = .systemGray4
-        
-        self.addSubview(avatarImageView)
-        self.addSubview(fullNameLabel)
-        self.addSubview(statusLabel)
-        self.addSubview(statusTextField)
-        self.addSubview(setStatusButton)
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(fullNameLabel)
+        contentView.addSubview(statusLabel)
+        contentView.addSubview(statusTextField)
+        contentView.addSubview(setStatusButton)
         
         setupConstraints()
     }
