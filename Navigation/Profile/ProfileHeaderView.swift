@@ -10,6 +10,8 @@ import UIKit
 
 class ProfileHeaderView: UIView {
     
+    private var statusText = String()           // Переменная для хранения введённого статуса
+    
     private lazy var avatarImageView: UIImageView = {
         let image = UIImageView()
         
@@ -104,8 +106,6 @@ class ProfileHeaderView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var statusText = String()                                   // Переменная для хранения введённого статуса
-    
     @objc private func statusTextChanged(_ textField: UITextField) {    // Обработчик изменений текстового поля statusTextField
         if let text = textField.text {
             statusText = text
@@ -123,29 +123,21 @@ class ProfileHeaderView: UIView {
             avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
             avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
             avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100)
-        ])
-        
-        NSLayoutConstraint.activate([
+            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
+            
             fullNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
             fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 24),
-            fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16)
-        ])
-        
-        NSLayoutConstraint.activate([
+            fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16),
+            
             statusLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
             statusLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16)
-        ])
-        
-        NSLayoutConstraint.activate([
+            statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+            
             statusTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
             statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
             statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40)
-        ])
-        
-        NSLayoutConstraint.activate([
+            statusTextField.heightAnchor.constraint(equalToConstant: 40),
+            
             setStatusButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
             setStatusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 136),
             setStatusButton.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -32),
