@@ -22,8 +22,8 @@ class ProfileViewController: UIViewController {
     }()
     
     private enum CellReuseID: String {
-//        case base = "BaseTableViewCell_ReuseID"
-        case custom = "CustomTableViewCell_ReuseID"
+        case custom_0 = "CustomTableViewCell_ReuseID_0"
+        case custom_1 = "CustomTableViewCell_ReuseID_1"
     }
     
     // MARK: - Lifecycle
@@ -52,8 +52,9 @@ class ProfileViewController: UIViewController {
     
     private func setupTableView() {
         tableView.sectionFooterHeight = 0
-//        tableView.register(BaseTableViewCell.self, forCellReuseIdentifier: CellReuseID.base.rawValue)
-        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: CellReuseID.custom.rawValue)
+        
+        tableView.register(PhotosTableViewCell.self, forCellReuseIdentifier: CellReuseID.custom_0.rawValue)
+        tableView.register(PostTableViewCell.self, forCellReuseIdentifier: CellReuseID.custom_1.rawValue)
         tableView.register(ProfileTableHederView.self, forHeaderFooterViewReuseIdentifier: "headerInSection")
         
         tableView.dataSource = self
@@ -63,34 +64,53 @@ class ProfileViewController: UIViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 2
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return section == 0 ? 1 : data.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: CellReuseID.custom.rawValue,
-            for: indexPath
-        ) as? PostTableViewCell else {
-            fatalError("could not dequeueReusableCell")
+        if indexPath.section == 0 {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellReuseID.custom_0.rawValue,
+                for: indexPath
+            ) as? PhotosTableViewCell else {
+                fatalError("could not dequeueReusableCell")
+            }
+            
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: CellReuseID.custom_1.rawValue,
+                for: indexPath
+            ) as? PostTableViewCell else {
+                fatalError("could not dequeueReusableCell")
+            }
+            
+            cell.update(data[indexPath.row])
+            
+            return cell
         }
-        
-        cell.update(data[indexPath.row])
-        
-        return cell
     }
 }
 
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = tableView.dequeueReusableHeaderFooterView(withIdentifier: "headerInSection")
-        return header
+        return section == 0 ? header : nil
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 202
+        return section == 0 ? 202 : 0
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            let photoGallery = PhotosViewController()
+            photoGallery.modalPresentationStyle = .fullScreen
+            self.navigationController?.pushViewController(photoGallery, animated: true)
+        }
     }
 }
