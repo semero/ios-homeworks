@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import StorageService
 
 class ProfileViewController: UIViewController {
     
     // MARK: - Data
     
-    fileprivate let data = Post.make()
+    let data = Post.make()
     
     // MARK: - Subviews
     
@@ -30,7 +31,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGray6
+        #if DEBUG
+            view.backgroundColor = .systemRed
+        #else
+            view.backgroundColor = .systemBlue
+        #endif
+        
         view.addSubview(tableView)
         
         setupConstraints()

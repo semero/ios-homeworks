@@ -8,18 +8,18 @@
 import Foundation
 
 
-struct Post {
-    let author: String
-    let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem mollis aliquam ut porttitor leo. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl."
-    let image: String
-    let likes: Int
-    let views: Int
+public struct Post {
+    public let author: String
+    public let description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Porta lorem mollis aliquam ut porttitor leo. Fermentum odio eu feugiat pretium nibh ipsum consequat nisl."
+    public let image: String
+    public let likes: Int
+    public let views: Int
 }
 
 
 extension Post {
     
-    static func make() -> [Post] {
+    public static func make() -> [Post] {
         [
             Post(author: "Lorem ipsum A", image: "640x640", likes: 1, views: 2),
             Post(author: "Lorem ipsum B", image: "640x480", likes: 3, views: 4),
