@@ -138,23 +138,6 @@ class PostTableViewCell: UITableViewCell {
         postViewsLabel.text = "Views: \(model.views)"
     }
     
-    func setup(
-            with post: Post
-        ) {
-            authorLabel.text = post.author
-    //        postImage.image = UIImage(named: post.image)
-
-            if let image = UIImage(named: post.image) {
-                ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
-                    postImageView.image = $0
-                }
-            }
-
-            descriptionLabel.text = post.description
-            postViewsLabel.text = String("Likes: (post.views)")
-            postLikesLabel.text = String("Views: (post.likes)")
-        }
-    
     // MARK: - Actions
     
     @objc private func didTapButton(_ sender: UIResponder) {
