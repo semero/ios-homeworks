@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
@@ -124,8 +125,14 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Public
     
     func update(_ model: Post) {
+//        postImageView.image = UIImage(named: model.image)
+        if let image = UIImage(named: model.image) {
+            ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
+                postImageView.image = $0
+            }
+        }
+        
         authorLabel.text = model.author
-        postImageView.image = UIImage(named: model.image)
         descriptionLabel.text = model.description
         postLikesLabel.text = "Likes: \(model.likes)"
         postViewsLabel.text = "Views: \(model.views)"
