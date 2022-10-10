@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SnapKit
 
 class ProfileTableHederView: UITableViewHeaderFooterView {
     
@@ -116,29 +117,35 @@ class ProfileTableHederView: UITableViewHeaderFooterView {
     }
     
     private func setupConstraints() {
-        NSLayoutConstraint.activate([
-            avatarImageView.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-            avatarImageView.topAnchor.constraint(equalTo: self.topAnchor, constant: 16),
-            avatarImageView.widthAnchor.constraint(equalToConstant: 100),
-            avatarImageView.heightAnchor.constraint(equalToConstant: 100),
-            
-            fullNameLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            fullNameLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 24),
-            fullNameLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -16),
-            
-            statusLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            statusLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 50),
-            statusLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            
-            statusTextField.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 140),
-            statusTextField.topAnchor.constraint(equalTo: self.topAnchor, constant: 80),
-            statusTextField.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
-            statusTextField.heightAnchor.constraint(equalToConstant: 40),
-            
-            setStatusButton.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            setStatusButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 136),
-            setStatusButton.widthAnchor.constraint(equalTo: self.widthAnchor, constant: -32),
-            setStatusButton.heightAnchor.constraint(equalToConstant: 50)
-        ])
+        avatarImageView.snp.makeConstraints { (make) -> Void in
+            make.topMargin.equalTo(16)
+            make.leftMargin.equalTo(0)
+            make.height.equalTo(100)
+            make.width.equalTo(100)
+        }
+        
+        fullNameLabel.snp.makeConstraints { (make) -> Void in
+            make.topMargin.equalTo(24)
+            make.leftMargin.equalTo(140)
+        }
+        
+        statusLabel.snp.makeConstraints { (make) -> Void in
+            make.topMargin.equalTo(50)
+            make.leftMargin.equalTo(140)
+        }
+        
+        statusTextField.snp.makeConstraints { (make) -> Void in
+            make.topMargin.equalTo(80)
+            make.leftMargin.equalTo(140)
+            make.height.equalTo(40)
+            make.rightMargin.equalTo(0)
+        }
+        
+        setStatusButton.snp.makeConstraints { (make) -> Void in
+            make.topMargin.equalTo(136)
+            make.height.equalTo(50)
+            make.leftMargin.equalTo(0)
+            make.rightMargin.equalTo(0)
+        }
     }
 }

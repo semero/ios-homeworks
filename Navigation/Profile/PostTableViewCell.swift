@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import iOSIntPackage
 
 class PostTableViewCell: UITableViewCell {
     
@@ -124,12 +125,35 @@ class PostTableViewCell: UITableViewCell {
     // MARK: - Public
     
     func update(_ model: Post) {
+//        postImageView.image = UIImage(named: model.image)
+        if let image = UIImage(named: model.image) {
+            ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
+                postImageView.image = $0
+            }
+        }
+        
         authorLabel.text = model.author
-        postImageView.image = UIImage(named: model.image)
         descriptionLabel.text = model.description
         postLikesLabel.text = "Likes: \(model.likes)"
         postViewsLabel.text = "Views: \(model.views)"
     }
+    
+    func setup(
+            with post: Post
+        ) {
+            authorLabel.text = post.author
+    //        postImage.image = UIImage(named: post.image)
+
+            if let image = UIImage(named: post.image) {
+                ImageProcessor().processImage(sourceImage: image, filter: .colorInvert) {
+                    postImageView.image = $0
+                }
+            }
+
+            descriptionLabel.text = post.description
+            postViewsLabel.text = String("Likes: (post.views)")
+            postLikesLabel.text = String("Views: (post.likes)")
+        }
     
     // MARK: - Actions
     
